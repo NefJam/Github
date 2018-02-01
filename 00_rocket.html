@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -18,22 +18,25 @@
 
 <body>
 <button id="trigger">Launch the Rocket!</button>
+    <h2 id="msg">Rocket idle...</h2>
 <div id="space">
   <div id="rocket"><img src="rocket.png" height="120" alt="space rocket"/></div>
 </div>
 <script type="text/javascript">
+
+    //Scope of variables (extend or range of view): Global
+	var rocket = document.getElementById("rocket"); // Refer to det doms architecture - get elements by id in the html.
+    var trigger = document.getElementById("trigger"); 
+    var msg = document.getElementById("msg"); 
+    var pos = 0;
+	trigger.addEventListener('click', launchRocket); // event listeners - here click.
 	
-	var rocket = document.getElementById("rocket"); 
-	var trigger = document.getElementById("trigger"); 
-	
-	trigger.addEventListener('click', launchRocket);
-	
-	function launchRocket() {
-		
-    alert ('Get inspired ;-\): https://www.w3schools.com/howto/howto_js_animate.asp');
-	location.href = "https://www.w3schools.com/howto/howto_js_animate.asp";
-	
-	}
+    function launchRocket() {
+        msg.innerHTML = 'Rocket launched';
+        // anonymous function
+        setInterval(function () { pos++ , rocket.style.bottom = pos + 'px' }, 5);
+        
+        }
 	
 </script>
 </body>
